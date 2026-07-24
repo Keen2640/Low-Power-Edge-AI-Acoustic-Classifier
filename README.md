@@ -15,18 +15,16 @@ This repository contains the Machine Learning and Model Optimization pipeline fo
 ### 1. Audio Preprocessing Pipeline (Time Domain to Spectrogram)
 Raw 1D audio waveforms are transformed into 2D frequency representations using Short-Time Fourier Transform (STFT) / Mel-Spectrogram features before being fed into the quantized neural network.
 
-<p align="center">
-  <img src="assets/waveform_spectrogram.png" width="85%" alt="Audio Waveform and Spectrogram Analysis">
-</p>
+<img width="1474" height="1224" alt="image" src="https://github.com/user-attachments/assets/a6607c10-362f-4ad2-bfc0-984cf1c0ebca" />
+
 
 ---
 
 ### 2. Training Convergence & Accuracy Metrics
 The compact CNN achieved a **Final Test Accuracy of 79.44%** over 25 epochs. The training curves demonstrate smooth convergence between train/validation accuracy and loss, validating effective generalization without significant overfitting.
+<img width="2368" height="778" alt="image" src="https://github.com/user-attachments/assets/8b0bd633-fd8b-4786-8e52-d218473c8f0e" />
 
-<p align="center">
-  <img src="assets/training_metrics.png" width="90%" alt="Training vs Validation Accuracy and Loss Curves">
-</p>
+
 
 ---
 
