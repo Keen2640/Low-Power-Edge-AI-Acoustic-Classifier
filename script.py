@@ -1,14 +1,15 @@
 import os
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy.io import wavfile
+import soundfile as sf
 from scipy import signal
+
 
 def process_audio(wav_path):
     # 1. Load the WAV file
     # sample_rate (fs) is samples per second. data is the raw amplitude array.
-    sample_rate, data = wavfile.read(wav_path)
-    
+    data, sample_rate = sf.read(wav_path)
+    data = data.astype(np.float32)
     # Handle stereo files (convert to mono by taking the first channel)
     if len(data.shape) > 1:
         data = data[:, 0]
@@ -66,5 +67,23 @@ def process_audio(wav_path):
     plt.tight_layout()
     plt.show()
 
+def process_entire_folder(folder_path):
+    # Check if the folder actually exists
+    if not os.path.exists(folder_path):
+        print(f"Error: Folder '{folder_path}' not found!")
+        return
+
+    # Get a list of all files in the folder
+    files = os.listdir(folder_path)
+    
+    # Filter for only .wav files
+    wav_files = [f for f in files if f.lower().endswith('.wav')]
+    
+    print(f"Found {len(wav_files)} WAV file(s) in '{folder_path}'\n")
+
+    for file in wav_files:
+        full_path = os.path.join(folder_path, file)
+        process_audio(full_path)
+
 # Example usage: Drop a test .wav file in your directory and run it
-# process_audio("test_clap.wav")
+process_entire_folder("processed_sounds")
